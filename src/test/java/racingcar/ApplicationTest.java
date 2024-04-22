@@ -43,9 +43,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도할_횟수_유효성_검사() {
+    void 시도할_횟수_음수_예외() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도할_횟수_숫자가_아닌_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
