@@ -8,11 +8,15 @@ public class Car {
 	// 전진 위치
 	private String position = "";
 
-	public Car(final String name) {
+	private Car(final String name) {
 		if (name.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
 		}
 		this.name = name;
+	}
+
+	public static Car from(final String name) {
+		return new Car(name);
 	}
 
 	/**
