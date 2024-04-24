@@ -14,7 +14,7 @@ public class UserInputScan {
         return numberOfPlayGame;
     }
 
-    public UserInputScan() {
+    public void scan() {
         this.userNames = validationUserName(readLine());
         this.numberOfPlayGame = validationNumberOfPlayGame(readLine());
     }
@@ -28,10 +28,14 @@ public class UserInputScan {
     }
 
     private int validationNumberOfPlayGame(final String userInputNumberOfPlayGame) {
-        final int numberOfPlayGame = Integer.parseInt(userInputNumberOfPlayGame);
-        if (numberOfPlayGame < 0) {
+        try {
+            final int numberOfPlayGame = Integer.parseInt(userInputNumberOfPlayGame);
+            if (numberOfPlayGame < 0) {
+                throw new IllegalArgumentException();
+            }
+            return numberOfPlayGame;
+        } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        return numberOfPlayGame;
     }
 }
