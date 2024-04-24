@@ -68,7 +68,7 @@ public class RacingCarGame {
 		return cars.stream()
 				.map(Car::fetchCurrentPositionLength)
 				.max(Integer::compareTo)
-				.get();
+				.orElseThrow(() -> new IllegalStateException("자동차의 상태가 정상적이지 않습니다."));
 	}
 
 	/**
