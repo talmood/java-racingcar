@@ -1,5 +1,7 @@
 package racingcar.io;
 
+import racingcar.common.Constant;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserInputScan {
@@ -15,7 +17,9 @@ public class UserInputScan {
     }
 
     public void scan() {
+        System.out.println(Constant.PLACEHOLDER_NAME);
         this.userNames = validationUserName(readLine());
+        System.out.println(Constant.PLACEHOLDER_ROUND);
         this.numberOfPlayGame = validationNumberOfPlayGame(readLine());
     }
 
