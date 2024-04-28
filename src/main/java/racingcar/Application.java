@@ -6,5 +6,7 @@ public class Application {
         RacingCars readyRacingCars = racingGamePlayer.ready();
         RacingCars playedRacingCars = racingGamePlayer.play(readyRacingCars);
         racingGamePlayer.ending(playedRacingCars);
+
+        System.out.println("test");
     }
 }
