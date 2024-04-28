@@ -1,11 +1,12 @@
 package racingcar.model;
 
-import java.util.Objects;
+import racingcar.utils.StringUtils;
 
 public record RacingCarName(
         String name
 ) {
 
+    private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
 
     public RacingCarName {
@@ -13,8 +14,8 @@ public record RacingCarName(
     }
 
     private void validateNameCriteria(final String name) {
-        if (Objects.isNull(name)) {
-            throw new IllegalArgumentException("name must not be null.");
+        if (!StringUtils.hasText(name)) {
+            throw new IllegalArgumentException("name must not be null or empty string.");
         }
 
         if (!meetsNameLengthCriteria(name)) {
@@ -23,7 +24,7 @@ public record RacingCarName(
     }
 
     private boolean meetsNameLengthCriteria(final String name) {
-        return !name.isBlank() && name.length() <= MAX_NAME_LENGTH;
+        return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
     }
 
 }

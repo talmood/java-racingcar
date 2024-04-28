@@ -18,4 +18,13 @@ class RacingCarNameTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("주어진 이름이 null 또는 empty string 일 경우 예외를 발생한다.")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void invalid_car_name(String name) {
+        assertThatThrownBy(() -> new RacingCarName(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("name must not be null or empty string.");
+    }
+
 }
