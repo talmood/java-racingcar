@@ -18,14 +18,8 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public void moveForward(
-            final RandomSingleDigitPicker singleDigitPicker,
-            final AttemptCount attemptCount
-    ) {
-        while (attemptCount.hasCount()) {
-            cars.forEach(car -> car.goForward(singleDigitPicker));
-            attemptCount.deductOneCount();
-        }
+    public void moveForward(final RandomSingleDigitPicker singleDigitPicker) {
+        cars.forEach(car -> car.goForward(singleDigitPicker));
     }
 
     public WinnerCars judgeWinnerCars() {
