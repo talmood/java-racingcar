@@ -6,7 +6,7 @@ public record RacingCarName(
         String name
 ) {
 
-    public static final int MAX_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public RacingCarName {
         validateNameCriteria(name);
