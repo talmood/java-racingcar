@@ -14,7 +14,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, -100, -1000})
     void invalid_car_name(int numOfMovedForward) {
-        assertThatThrownBy(() -> new RacingCar(numOfMovedForward, new RacingCarName("haero77")))
+        assertThatThrownBy(() -> new RacingCar(numOfMovedForward, new RacingCarName("haero")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("numOfMovedForward must not be negative");
     }
@@ -24,7 +24,7 @@ public class RacingCarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void goForward_true(int pickedRandomNumber) {
         // given
-        final RacingCar sut = new RacingCar(0, new RacingCarName("haero77"));
+        final RacingCar sut = new RacingCar(0, new RacingCarName("haero"));
         final RandomSingleDigitPicker randomSingleDigitPicker = new FakeRandomSingleDigitPicker(pickedRandomNumber);
 
         // when
@@ -39,7 +39,7 @@ public class RacingCarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void goForward_false(int pickedRandomNumber) {
         // given
-        final RacingCar sut = new RacingCar(0, new RacingCarName("haero77"));
+        final RacingCar sut = new RacingCar(0, new RacingCarName("haero"));
         final RandomSingleDigitPicker randomSingleDigitPicker = new FakeRandomSingleDigitPicker(pickedRandomNumber);
 
         // when
