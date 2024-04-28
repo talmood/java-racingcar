@@ -1,12 +1,14 @@
-package racingcar;
+package racingcar.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.InputTest;
+import racingcar.controller.request.CarNamesRequest;
 
 public class InputViewTest extends InputTest {
 
@@ -44,8 +46,11 @@ public class InputViewTest extends InputTest {
 	void 정상적인_경우_입력한_자동차_이름_리스트를_반환한다() {
 		given("짱구카,흰둥카");
 
-		final List<String> actual = InputView.inputCarNamesToRace();
+		final CarNamesRequest actual = InputView.inputCarNamesToRace();
 
-		assertThat(actual.size()).isEqualTo(2);
+		assertAll(
+			() -> assertThat(actual.getCarNames().size()).isEqualTo(2),
+			() -> assertThat(actual.getCarNames()).containsExactly("짱구카", "흰둥카")
+		);
 	}
 }

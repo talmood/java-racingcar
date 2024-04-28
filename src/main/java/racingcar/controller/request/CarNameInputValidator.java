@@ -1,14 +1,14 @@
-package racingcar;
+package racingcar.controller.request;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class CarNameInputValidator {
+class CarNameInputValidator {
 
 	private static final String CAR_NAME_SEPARATOR = ",";
 
-	public static void validate(final String carNames) {
+	static void validate(final String carNames) {
 		validateNumberOfCars(carNames);
 		validateEmptyCarNames(splitCarNames(carNames));
 		validateBlankCarNames(splitCarNames(carNames));
