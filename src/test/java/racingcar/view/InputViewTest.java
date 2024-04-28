@@ -11,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.InputTest;
 import racingcar.controller.request.CarNamesRequest;
+import racingcar.controller.request.RoundRequest;
 
 @DisplayName("입력 테스트")
 public class InputViewTest extends InputTest {
@@ -84,6 +85,25 @@ public class InputViewTest extends InputTest {
 			assertThatThrownBy(InputView::inputRacingRound)
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("경주 라운드에 빈 값을 입력할 수 없습니다.");
+		}
+
+		@ValueSource(strings = {"일", "I", "I0", "---"})
+		@ParameterizedTest
+		void 라운드_입력_시_숫자가_아닌_값을_입력할_수_없다(final String round) {
+			given(round);
+
+			assertThatThrownBy(InputView::inputRacingRound)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("경주 라운드에 정수가 아닌 값을 입력할 수 없습니다.");
+		}
+
+		@Test
+		void 정상적인_경우_입력한_라운드를_반환한다() {
+			given("2");
+
+			final RoundRequest actual = InputView.inputRacingRound();
+
+			assertThat(actual.getRound()).isEqualTo(2);
 		}
 	}
 }
