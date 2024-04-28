@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class RacingCar {
 
+    private static final String NAME_LOCATION_DELIMITER = " : ";
     private final CarName carName;
     private final Location location;
     private final MoveForwardCondition moveForwardCondition;
@@ -31,7 +32,7 @@ public class RacingCar {
 
     public void printRacingCar() {
         this.carName.printName();
-        System.out.print(" : ");
+        System.out.print(NAME_LOCATION_DELIMITER);
         this.location.printLocation();
         System.out.println();
     }

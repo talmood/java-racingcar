@@ -2,12 +2,14 @@ package racingcar;
 
 import java.util.List;
 
+import static racingcar.RacingGameNavigation.*;
+
 public class RacingGamePlayer {
 
     private static final String CAR_NAME_JOIN_DELIMITER = ",";
 
     public RacingCars ready() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(CAR_NAME_NAVIGATION);
         CarNamesCreator carNamesCreator = new UserInputCarNamesCreator();
         List<CarName> carNames = carNamesCreator.create();
 
@@ -16,7 +18,7 @@ public class RacingGamePlayer {
     }
 
     public RacingCars play(RacingCars racingCars) {
-        System.out.println("시도할 회수는 몇회인가요?");
+        System.out.println(TRY_NUMBER_NAVIGATION);
         RacingCarsMover racingCarsMover = new RandomRacingCarsMover();
         return racingCarsMover.moveForwardManyTimes(racingCars);
     }
@@ -26,7 +28,7 @@ public class RacingGamePlayer {
         RacingCars racingWinners = racingWinnerFinder.find(racingCars);
 
         String winnerNamesWithJoin = racingWinners.getCarNamesWithJoin(CAR_NAME_JOIN_DELIMITER);
-        System.out.print("최종 우승자 : ");
+        System.out.print(FINAL_WINNER_NAVIGATION);
         System.out.println(winnerNamesWithJoin);
     }
 }
