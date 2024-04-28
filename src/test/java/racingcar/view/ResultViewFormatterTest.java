@@ -37,7 +37,22 @@ class ResultViewFormatterTest {
         );
     }
 
-    @DisplayName("우승자 출력을 위한 문자열을 포맷팅한다.")
+    @DisplayName("우승자 출력을 위한 문자열을 포맷팅한다. - 단독 우승")
+    @Test
+    void formatWinnerCars_single() {
+        // given
+        final WinnerCars winnerCars = new WinnerCars(
+                List.of(new RacingCar(2, new RacingCarName("pobi")))
+        );
+
+        // when
+        final String actual = ResultViewFormatter.formatWinnerCars(winnerCars);
+
+        // then
+        assertThat(actual).isEqualTo("최종 우승자 : pobi");
+    }
+
+    @DisplayName("우승자 출력을 위한 문자열을 포맷팅한다. - 공동 우승")
     @Test
     void formatWinnerCars() {
         // given
