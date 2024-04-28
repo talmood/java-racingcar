@@ -11,4 +11,8 @@ public class StringUtils {
         return Objects.nonNull(target) && !target.isEmpty();
     }
 
+    public static boolean isEmptyText(String target) {
+        return Objects.isNull(target) || target.isEmpty();
+    }
+
 }

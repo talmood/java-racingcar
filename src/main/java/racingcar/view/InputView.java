@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.AttemptCount;
 import racingcar.model.RacingCarName;
 import racingcar.model.RacingCarNames;
 import racingcar.utils.StringUtils;
@@ -30,6 +31,15 @@ public class InputView {
         return createRacingCarNames(inputMessage);
     }
 
+    public AttemptCount inputAttemptCount() {
+        outputPrinter.printLine(UserGuideMessage.INPUT_ATTEMPT_COUNT.getMessage());
+        final String inputMessage = inputReader.readLine();
+
+        validateAttemptCountFormat(inputMessage);
+
+        return AttemptCount.from(Integer.parseInt(inputMessage));
+    }
+
     private RacingCarNames createRacingCarNames(final String inputMessage) {
         return new RacingCarNames(Arrays.stream(splitWithSeparator(inputMessage))
                 .map(RacingCarName::new)
@@ -52,8 +62,19 @@ public class InputView {
         }
     }
 
+    // todo 컨텍스트에 맞게 이름 수정
     private String[] splitWithSeparator(final String nameLiterals) {
         return nameLiterals.split(NAME_SEPARATOR);
+    }
+
+    private void validateAttemptCountFormat(final String attemptCountLiteral) {
+        if (StringUtils.isEmptyText(attemptCountLiteral)) {
+            throw new IllegalArgumentException("Attempt count must not be null or empty string.");
+        }
+
+        if (!attemptCountLiteral.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("Attempt count must be numeric.");
+        }
     }
 
 }
