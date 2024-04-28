@@ -25,7 +25,7 @@ public class CarsTest {
 	private static Stream<Arguments> provideCar() {
 		return Stream.of(
 			arguments(List.of()),
-			arguments(List.of(Car.of(1, mock(Engine.class))))
+			arguments(List.of(Car.of(1, "짱구카", mock(Engine.class))))
 		);
 	}
 }
