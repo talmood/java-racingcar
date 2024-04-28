@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.RacingGameNavigation.*;
@@ -8,6 +9,7 @@ import static racingcar.RacingGameNavigation.*;
 public class RacingGamePlayer {
 
     private static final String CAR_NAME_JOIN_DELIMITER = ",";
+    private static final String ONLY_NUMBER_REGEX = "[0-9]+";
 
     public RacingCars ready() {
         System.out.println(CAR_NAME_NAVIGATION);
@@ -21,7 +23,11 @@ public class RacingGamePlayer {
     public RacingCars play(RacingCars racingCars) {
         System.out.println(TRY_NUMBER_NAVIGATION);
         RacingCarsMover racingCarsMover = new RandomRacingCarsMover();
-        int totalTryNumber = Integer.parseInt(readLine());
+        String userTryInput = readLine();
+        if (!Pattern.matches(ONLY_NUMBER_REGEX, userTryInput)) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 입력할 수 있습니다.");
+        }
+        int totalTryNumber = Integer.parseInt(userTryInput);
         System.out.println();
 
         return racingCarsMover.moveForwardManyTimes(racingCars, totalTryNumber);
