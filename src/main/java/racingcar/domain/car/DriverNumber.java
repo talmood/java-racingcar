@@ -20,6 +20,6 @@ public class DriverNumber {
 	}
 
 	public int getDriverNumber() {
-		return driverNumber;
+		return this.driverNumber;
 	}
 }

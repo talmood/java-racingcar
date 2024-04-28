@@ -7,6 +7,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.car.engine.Engine;
 
 public class CarTest {
@@ -24,7 +26,7 @@ public class CarTest {
 			() -> verify(engine).isMovable(),
 			() -> assertThat(sut.getPosition())
 				.usingRecursiveComparison()
-				.isEqualTo(new Position(1))
+				.isEqualTo(Position.from(1))
 		);
 	}
 
@@ -39,7 +41,20 @@ public class CarTest {
 			() -> verify(engine).isMovable(),
 			() -> assertThat(sut.getPosition())
 				.usingRecursiveComparison()
-				.isEqualTo(new Position(0))
+				.isEqualTo(Position.init())
 		);
+	}
+
+	@CsvSource(value = {
+		"0, true",
+		"1, false"
+	})
+	@ParameterizedTest
+	void 두_자동차가_같은_위치인지_확인한다(final int maxPosition, final boolean expected) {
+		final Car sut = Car.of(1, "짱구카", mock(Engine.class));
+
+		final boolean actual = sut.isSamePosition(Position.from(maxPosition));
+
+		assertThat(actual).isEqualTo(expected);
 	}
 }

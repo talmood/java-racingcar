@@ -14,7 +14,7 @@ public class RandomEngine implements Engine {
 
 	@Override
 	public boolean isMovable() {
-		final int randomNumber = randomNumberPicker.pick();
+		final int randomNumber = this.randomNumberPicker.pick();
 		return randomNumber > MOVABLE_CONDITION;
 	}
 }

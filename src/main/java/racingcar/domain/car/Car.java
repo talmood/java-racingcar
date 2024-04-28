@@ -17,7 +17,7 @@ public class Car {
 	}
 
 	public static Car of(final int driverNumber, final String carName, final Engine engine) {
-		return new Car(DriverNumber.from(driverNumber), CarName.from(carName), engine, new Position());
+		return new Car(DriverNumber.from(driverNumber), CarName.from(carName), engine, Position.init());
 	}
 
 	public void move() {
@@ -39,6 +39,6 @@ public class Car {
 	}
 
 	public Position getPosition() {
-		return new Position(this.position.getPosition());
+		return Position.from(this.position.getPosition());
 	}
 }

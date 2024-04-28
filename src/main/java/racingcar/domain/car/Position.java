@@ -8,12 +8,23 @@ public class Position implements Comparable<Position> {
 
 	private int position;
 
-	public Position() {
-		this(INITIAL_POSITION);
+	private Position(final int position) {
+		this.position = position;
 	}
 
-	public Position(final int position) {
-		this.position = position;
+	public static Position init() {
+		return Position.from(INITIAL_POSITION);
+	}
+
+	public static Position from(final int position) {
+		validate(position);
+		return new Position(position);
+	}
+
+	private static void validate(final int position) {
+		if (position < 0) {
+			throw new IllegalArgumentException("위치는 마이너스가 될 수 없습니다.");
+		}
 	}
 
 	public void forward() {

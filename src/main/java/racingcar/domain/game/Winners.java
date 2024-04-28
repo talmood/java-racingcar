@@ -6,7 +6,7 @@ import racingcar.domain.car.Position;
 
 public class Winners {
 
-	private List<Car> cars;
+	private final List<Car> cars;
 
 	private Winners(final List<Car> cars) {
 		this.cars = cars;
@@ -25,7 +25,7 @@ public class Winners {
 		return cars.getCars().stream()
 			.map(Car::getPosition)
 			.max(Position::compareTo)
-			.orElseGet(Position::new);
+			.orElseGet(Position::init);
 	}
 
 	public List<Car> getWinners() {
