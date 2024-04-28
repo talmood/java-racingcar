@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.game;
 
 public class Round {
 
@@ -14,6 +14,10 @@ public class Round {
 		if (this.currentRound < this.totalRound) {
 			this.currentRound++;
 		}
+	}
+
+	public boolean isFinished() {
+		return this.currentRound == this.totalRound;
 	}
 
 	public int getCurrentRound() {
