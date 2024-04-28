@@ -22,6 +22,7 @@ public class UserInputScan {
         System.out.println(Constant.PLACEHOLDER_ROUND);
         this.numberOfPlayRound = validationNumberOfPlayRound(readLine());
     }
+
     public String[] validationUserName(final String userInputName) {
         try {
             return userInputName.split(",");

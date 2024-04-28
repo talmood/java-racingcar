@@ -6,10 +6,6 @@ public class UserInputScanFixture {
         return "John,Doe";
     }
 
-    public static String getNameLengthOver() {
-        return "John,Isabella";
-    }
-
     public static String[] getNameArrayDefault() {
         return new String[]{"John", "Doe"};
     }
