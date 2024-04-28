@@ -28,4 +28,8 @@ public class AttemptCount {
         return count;
     }
 
+    public boolean hasCount() {
+        return this.count != 0;
+    }
+
 }

@@ -33,15 +33,15 @@ class AttemptCountTest {
     }
 
     @Test
-    void ranOutOfCount_true() {
-        final AttemptCount sut = new AttemptCount(0);
-        assertThat(sut.ranOutOfCount()).isTrue();
+    void hasCount_true() {
+        final AttemptCount sut = new AttemptCount(1);
+        assertThat(sut.hasCount()).isTrue();
     }
 
     @Test
-    void ranOutOfCount_false() {
-        final AttemptCount sut = new AttemptCount(1);
-        assertThat(sut.ranOutOfCount()).isFalse();
+    void hasCount_false() {
+        final AttemptCount sut = new AttemptCount(0);
+        assertThat(sut.hasCount()).isFalse();
     }
 
 }

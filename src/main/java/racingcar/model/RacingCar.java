@@ -1,9 +1,8 @@
 package racingcar.model;
 
-import java.util.Objects;
-
 public class RacingCar {
 
+    private static final int INITIAL_NUM_OF_MOVED_FORWARD = 0;
     private static final int MOVE_FORWARD_LOWER_LIMIT = 4;
 
     private int numOfMovedForward;
@@ -16,6 +15,10 @@ public class RacingCar {
 
         this.numOfMovedForward = numOfMovedForward;
         this.name = name;
+    }
+
+    public static RacingCar fromName(final RacingCarName name) {
+        return new RacingCar(INITIAL_NUM_OF_MOVED_FORWARD, name);
     }
 
     public void goForward(final RandomSingleDigitPicker singleDigitPicker) {
