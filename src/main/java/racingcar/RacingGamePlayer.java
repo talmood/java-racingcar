@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.RacingGameNavigation.*;
 
 public class RacingGamePlayer {
@@ -20,7 +21,10 @@ public class RacingGamePlayer {
     public RacingCars play(RacingCars racingCars) {
         System.out.println(TRY_NUMBER_NAVIGATION);
         RacingCarsMover racingCarsMover = new RandomRacingCarsMover();
-        return racingCarsMover.moveForwardManyTimes(racingCars);
+        int totalTryNumber = Integer.parseInt(readLine());
+        System.out.println();
+
+        return racingCarsMover.moveForwardManyTimes(racingCars, totalTryNumber);
     }
 
     public void ending(RacingCars racingCars) {

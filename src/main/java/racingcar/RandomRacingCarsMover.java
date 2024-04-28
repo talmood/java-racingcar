@@ -1,6 +1,5 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.RacingGameNavigation.MOVE_RESULT_NAVIGATION;
 
 public class RandomRacingCarsMover implements RacingCarsMover {
@@ -14,9 +13,7 @@ public class RandomRacingCarsMover implements RacingCarsMover {
     }
 
     @Override
-    public RacingCars moveForwardManyTimes(RacingCars racingCars) {
-        int totalTryNumber = Integer.parseInt(readLine());
-        System.out.println();
+    public RacingCars moveForwardManyTimes(RacingCars racingCars, int totalTryNumber) {
         for (int i = 0; i < totalTryNumber; i++) {
             racingCars = this.moveForward(racingCars);
             System.out.println();
