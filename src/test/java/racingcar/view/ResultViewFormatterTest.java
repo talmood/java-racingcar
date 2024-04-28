@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCarName;
 import racingcar.model.RacingCars;
+import racingcar.model.WinnerCars;
 
 import java.util.List;
 
@@ -34,6 +35,24 @@ class ResultViewFormatterTest {
                         woni : -
                         jun : --"""
         );
+    }
+
+    @DisplayName("우승자 출력을 위한 문자열을 포맷팅한다.")
+    @Test
+    void formatWinnerCars() {
+        // given
+        final WinnerCars winnerCars = new WinnerCars(
+                List.of(
+                        new RacingCar(2, new RacingCarName("pobi")),
+                        new RacingCar(2, new RacingCarName("jun"))
+                )
+        );
+
+        // when
+        final String actual = ResultViewFormatter.formatWinnerCars(winnerCars);
+
+        // then
+        assertThat(actual).isEqualTo("최종 우승자 : pobi, jun");
     }
 
 }

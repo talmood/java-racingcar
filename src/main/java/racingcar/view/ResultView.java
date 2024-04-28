@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.model.RacingCars;
+import racingcar.model.WinnerCars;
 
 public class ResultView {
 
@@ -17,6 +18,10 @@ public class ResultView {
     public void printGameStatus(final RacingCars cars) {
         outputPrinter.printLine(ResultViewFormatter.formatGameStatus(cars));
         outputPrinter.printEmptyLine();
+    }
+
+    public void printWinnerCars(final WinnerCars cars) {
+        outputPrinter.printLine(ResultViewFormatter.formatWinnerCars(cars));
     }
 
 }
