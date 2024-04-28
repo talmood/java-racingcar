@@ -28,4 +28,19 @@ public class RacingCars {
         }
     }
 
+    public WinnerCars judgeWinnerCars() {
+        final List<RacingCar> winnerCars = this.cars.stream()
+                .filter(car -> car.matchesNumOfMovedForward(calculateMaxNumOfMovedForward()))
+                .toList();
+
+        return new WinnerCars(winnerCars);
+    }
+
+    private Integer calculateMaxNumOfMovedForward() {
+        return this.cars.stream()
+                .map(RacingCar::getNumOfMovedForward)
+                .max(Integer::compareTo)
+                .orElse(0);
+    }
+
 }

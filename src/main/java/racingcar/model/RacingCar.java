@@ -27,6 +27,10 @@ public class RacingCar {
         }
     }
 
+    public boolean matchesNumOfMovedForward(final int maxNumOfMovedForward) {
+        return this.numOfMovedForward == maxNumOfMovedForward;
+    }
+
     public int getNumOfMovedForward() {
         return this.numOfMovedForward;
     }
