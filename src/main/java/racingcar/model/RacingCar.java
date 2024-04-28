@@ -7,15 +7,11 @@ public class RacingCar {
     private static final int MOVE_FORWARD_LOWER_LIMIT = 4;
 
     private int numOfMovedForward;
-    private final String name;
+    private final RacingCarName name;
 
-    RacingCar(final int numOfMovedForward, final String name) {
+    RacingCar(final int numOfMovedForward, final RacingCarName name) {
         if (numOfMovedForward < 0) {
             throw new IllegalArgumentException("numOfMovedForward must not be negative");
-        }
-
-        if (Objects.isNull(name) || name.isBlank()) {
-            throw new IllegalArgumentException("name must not be null or empty string.");
         }
 
         this.numOfMovedForward = numOfMovedForward;
@@ -32,7 +28,7 @@ public class RacingCar {
         return this.numOfMovedForward;
     }
 
-    public String getName() {
+    public RacingCarName getName() {
         return this.name;
     }
 
