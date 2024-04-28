@@ -15,8 +15,7 @@ public class ResultView {
     }
 
     public void printGameStatus(final RacingCars cars) {
-        final ResultViewFormatter formatter = new ResultViewFormatter(cars);
-        outputPrinter.printLine(formatter.formatGameStatus());
+        outputPrinter.printLine(ResultViewFormatter.formatGameStatus(cars));
         outputPrinter.printEmptyLine();
     }
 

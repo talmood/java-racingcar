@@ -23,10 +23,9 @@ class ResultViewFormatterTest {
                         new RacingCar(2, new RacingCarName("jun"))
                 )
         );
-        final ResultViewFormatter sut = new ResultViewFormatter(racingCars);
 
         // when
-        final String actual = sut.formatGameStatus();
+        final String actual = ResultViewFormatter.formatGameStatus(racingCars);
 
         // then
         assertThat(actual).isEqualTo(

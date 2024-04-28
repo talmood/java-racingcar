@@ -13,19 +13,16 @@ public class ResultViewFormatter {
     private static final String SEMI_COLON = ":";
     private static final String HYPHEN = "-";
 
-    private final RacingCars cars;
-
-    public ResultViewFormatter(final RacingCars cars) {
-        this.cars = cars;
+    private ResultViewFormatter() {
     }
 
-    public String formatGameStatus() {
-        return this.cars.getCars().stream()
-                .map(this::formatSingleCarStatus)
+    public static String formatGameStatus(RacingCars cars) {
+        return cars.getCars().stream()
+                .map(ResultViewFormatter::formatSingleCarStatus)
                 .collect(Collectors.joining(EMPTY_LINE));
     }
 
-    private String formatSingleCarStatus(final RacingCar car) {
+    private static String formatSingleCarStatus(final RacingCar car) {
         return new StringBuilder()
                 .append(car.fetchName())
                 .append(BLANK)
