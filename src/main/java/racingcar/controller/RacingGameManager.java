@@ -6,6 +6,7 @@ import racingcar.controller.request.RoundRequest;
 import racingcar.controller.response.CarRoundResult;
 import racingcar.controller.response.RacingResult;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
 import racingcar.domain.car.append.CarAppend;
 import racingcar.domain.car.append.RandomEngineCarAppend;
 import racingcar.domain.game.Cars;
@@ -53,12 +54,33 @@ public class RacingGameManager {
 	}
 
 	private List<RacingResult> toRacingResults(final List<Car> cars) {
+		final List<CarName> carNames = toCarNames(cars);
 		return cars.stream()
-			.map(this::toRacingResult)
+			.map(car -> {
+				final long duplicateCount = countSameCarName(carNames, car);
+				return toRacingResult(car, duplicateCount);
+			})
 			.toList();
 	}
 
-	private RacingResult toRacingResult(final Car car) {
-		return RacingResult.from(car);
+	private List<CarName> toCarNames(final List<Car> cars) {
+		return cars.stream()
+			.map(Car::getCarName)
+			.toList();
+	}
+
+	private long countSameCarName(final List<CarName> carNames, final Car car) {
+		return carNames.stream()
+			.filter(carName -> car.getCarName().equals(carName))
+			.count();
+	}
+
+	private RacingResult toRacingResult(final Car car, final long duplicateCount) {
+		final boolean isActivateDriverNumber = isActivateDriverNumber(duplicateCount);
+		return RacingResult.of(car, isActivateDriverNumber);
+	}
+
+	private boolean isActivateDriverNumber(final long duplicateCount) {
+		return duplicateCount > 1;
 	}
 }

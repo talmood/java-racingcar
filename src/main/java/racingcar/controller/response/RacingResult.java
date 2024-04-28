@@ -6,14 +6,16 @@ public class RacingResult {
 
 	private final int driverNumber;
 	private final String name;
+	private final boolean isActivateDriverNumber;
 
-	private RacingResult(final int driverNumber, final String name) {
+	private RacingResult(final int driverNumber, final String name, final boolean isActivateDriverNumber) {
 		this.driverNumber = driverNumber;
 		this.name = name;
+		this.isActivateDriverNumber = isActivateDriverNumber;
 	}
 
-	public static RacingResult from(final Car car) {
-		return new RacingResult(car.getDriverNumber().getDriverNumber(), car.getCarName().getName());
+	public static RacingResult of(final Car car, final boolean isActivateDriverNumber) {
+		return new RacingResult(car.getDriverNumber().getDriverNumber(), car.getCarName().getName(), isActivateDriverNumber);
 	}
 
 	public int getDriverNumber() {
@@ -22,5 +24,9 @@ public class RacingResult {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public boolean isActivateDriverNumber() {
+		return this.isActivateDriverNumber;
 	}
 }

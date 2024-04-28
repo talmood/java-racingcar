@@ -22,7 +22,7 @@ public class OutputView {
 
 	public static void printRacingResult(final List<RacingResult> racingResults) {
 		final String winnerNames = racingResults.stream()
-			.map(RacingResult::getName)
+			.map(OutputView::toWinnerView)
 			.collect(Collectors.joining(", "));
 		System.out.printf("\n최종 우승자 : %s", winnerNames);
 	}
@@ -31,5 +31,15 @@ public class OutputView {
 		return IntStream.range(0, position)
 			.mapToObj(number -> POSITION_VIEW)
 			.collect(Collectors.joining());
+	}
+
+	private static String toWinnerView(final RacingResult racingResult) {
+		final StringBuilder sb = new StringBuilder(racingResult.getName());
+
+		if (racingResult.isActivateDriverNumber()) {
+			sb.append("(").append(racingResult.getDriverNumber()).append(")");
+		}
+
+		return sb.toString();
 	}
 }
