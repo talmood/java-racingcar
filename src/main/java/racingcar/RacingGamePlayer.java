@@ -4,6 +4,8 @@ import java.util.List;
 
 public class RacingGamePlayer {
 
+    private static final String CAR_NAME_JOIN_DELIMITER = ",";
+
     public RacingCars ready() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         CarNamesCreator carNamesCreator = new UserInputCarNamesCreator();
@@ -23,7 +25,7 @@ public class RacingGamePlayer {
         RacingWinnerFinder racingWinnerFinder = new RacingWinnerFinder();
         RacingCars racingWinners = racingWinnerFinder.find(racingCars);
 
-        String winnerNamesWithJoin = racingWinners.getCarNamesWithJoin(",");
+        String winnerNamesWithJoin = racingWinners.getCarNamesWithJoin(CAR_NAME_JOIN_DELIMITER);
         System.out.print("최종 우승자 : ");
         System.out.println(winnerNamesWithJoin);
     }
