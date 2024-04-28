@@ -26,6 +26,14 @@ public class Car {
 		}
 	}
 
+	public DriverNumber getDriverNumber() {
+		return DriverNumber.from(this.driverNumber.getDriverNumber());
+	}
+
+	public CarName getCarName() {
+		return CarName.from(this.carName.getName());
+	}
+
 	public Position getPosition() {
 		return new Position(this.position.getPosition());
 	}

@@ -25,10 +25,16 @@ public class RacingGame {
 			.toList();
 	}
 
+	public boolean isFinished() {
+		return this.round.isFinished();
+	}
+
 	public void race() {
-		while (!this.round.isFinished()) {
-			this.round.play();
-			this.cars.race();
-		}
+		this.round.play();
+		this.cars.race();
+	}
+
+	public Cars getCars() {
+		return Cars.from(this.cars.getCars());
 	}
 }

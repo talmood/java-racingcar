@@ -25,4 +25,8 @@ public class Cars {
 	public void race() {
 		cars.forEach(Car::move);
 	}
+
+	public List<Car> getCars() {
+		return List.copyOf(this.cars);
+	}
 }

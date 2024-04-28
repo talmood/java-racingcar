@@ -1,14 +1,15 @@
 package racingcar.controller;
 
-import static racingcar.view.InputView.inputCarNamesToRace;
-import static racingcar.view.InputView.inputRacingRound;
-
 import java.util.List;
 import racingcar.controller.request.CarNamesRequest;
 import racingcar.controller.request.RoundRequest;
+import racingcar.controller.response.CarRoundResult;
+import racingcar.domain.car.Car;
 import racingcar.domain.car.append.CarAppend;
 import racingcar.domain.car.append.RandomEngineCarAppend;
+import racingcar.domain.game.Cars;
 import racingcar.domain.game.RacingGame;
+import racingcar.view.OutputView;
 
 public class RacingGameManager {
 
@@ -18,11 +19,13 @@ public class RacingGameManager {
 		this.driverNumberGenerator = new DriverNumberGenerator();
 	}
 
-	public RacingGame prepareRacingGame() {
-		final CarNamesRequest carNamesRequest = inputCarNamesToRace();
-		final RoundRequest roundRequest = inputRacingRound();
+	public void play(final CarNamesRequest carNamesRequest, final RoundRequest roundRequest) {
+		final RacingGame racingGame = RacingGame.of(toCarAppends(carNamesRequest), roundRequest.getRound());
 
-		return RacingGame.of(toCarAppends(carNamesRequest), roundRequest.getRound());
+		while (!racingGame.isFinished()) {
+			racingGame.race();
+			OutputView.printRoundResult(toCarRoundResults(racingGame.getCars()));
+		}
 	}
 
 	private List<CarAppend> toCarAppends(final CarNamesRequest carNamesRequest) {
@@ -33,5 +36,15 @@ public class RacingGameManager {
 
 	private CarAppend toCarAppend(final String carName) {
 		return new RandomEngineCarAppend(driverNumberGenerator.allocate(), carName);
+	}
+
+	private List<CarRoundResult> toCarRoundResults(final Cars cars) {
+		return cars.getCars().stream()
+			.map(this::toCarRoundResult)
+			.toList();
+	}
+
+	private CarRoundResult toCarRoundResult(final Car car) {
+		return CarRoundResult.from(car);
 	}
 }

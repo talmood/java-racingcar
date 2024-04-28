@@ -18,4 +18,8 @@ public class DriverNumber {
 			throw new IllegalArgumentException("드라이버 넘버는 1 이상의 숫자만 선택할 수 있습니다.");
 		}
 	}
+
+	public int getDriverNumber() {
+		return driverNumber;
+	}
 }
