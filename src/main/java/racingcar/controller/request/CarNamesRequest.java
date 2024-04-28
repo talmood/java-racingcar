@@ -13,7 +13,7 @@ public class CarNamesRequest {
 
 	public static CarNamesRequest from(final String carNames) {
 		CarNameInputValidator.validate(carNames);
-		return new CarNamesRequest(Arrays.stream(carNames.split(",")).toList());
+		return new CarNamesRequest(Arrays.stream(carNames.split(",")).map(String::trim).toList());
 	}
 
 	public List<String> getCarNames() {
