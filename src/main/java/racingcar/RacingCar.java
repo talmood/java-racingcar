@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class RacingCar {
 
     private final CarName carName;
@@ -7,6 +9,9 @@ public class RacingCar {
     private final MoveForwardCondition moveForwardCondition;
 
     private RacingCar(CarName carName, Location location, MoveForwardCondition moveForwardCondition) {
+        if (Objects.isNull(carName) || Objects.isNull(location) || Objects.isNull(moveForwardCondition)) {
+            throw new IllegalArgumentException("carName, location, moveForwardCondition must be not null");
+        }
         this.carName = carName;
         this.location = location;
         this.moveForwardCondition = moveForwardCondition;
