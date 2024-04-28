@@ -30,8 +30,8 @@ class RacingCarTest {
     }
 
     @Test
-    @DisplayName("ThresholdCondition인 경우 임계치 보다 낮은 value라면 전진하지않는다.")
-    void ThresholdCondition인_경우_임계치_보다_낮은_value라면_전진하지않는다() {
+    @DisplayName("ThresholdCondition인 경우 임계치 보다 낮은 value라면 전진하지 않는다.")
+    void ThresholdCondition인_경우_임계치_보다_낮은_value라면_전진하지_않는다() {
         RacingCar racingCar = RacingCar.create(CarName.create("jun"), new ThresholdCondition());
         int value = 3;
 
