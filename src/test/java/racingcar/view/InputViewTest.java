@@ -75,5 +75,15 @@ public class InputViewTest extends InputTest {
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("경주 라운드에 0 이하의 값을 입력할 수 없습니다.");
 		}
+
+		@ValueSource(strings = {"", " "})
+		@ParameterizedTest
+		void 라운드_입력_시_빈_값을_입력할_수_없다(final String round) {
+			given(round);
+
+			assertThatThrownBy(InputView::inputRacingRound)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("경주 라운드에 빈 값을 입력할 수 없습니다.");
+		}
 	}
 }
