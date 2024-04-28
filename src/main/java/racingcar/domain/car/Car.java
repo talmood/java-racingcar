@@ -26,6 +26,10 @@ public class Car {
 		}
 	}
 
+	public boolean isSamePosition(final Position position) {
+		return this.position.equals(position);
+	}
+
 	public DriverNumber getDriverNumber() {
 		return DriverNumber.from(this.driverNumber.getDriverNumber());
 	}
