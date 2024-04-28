@@ -5,12 +5,18 @@ import racingcar.domain.car.position.Position;
 
 public class Car {
 
+	private final DriverNumber driverNumber;
 	private final Engine engine;
 	private final Position position;
 
-	public Car(final Engine engine) {
+	private Car(final DriverNumber driverNumber, final Engine engine, final Position position) {
+		this.driverNumber = driverNumber;
 		this.engine = engine;
-		this.position = new Position();
+		this.position = position;
+	}
+
+	public static Car of(final int driverNumber, final Engine engine) {
+		return new Car(DriverNumber.from(driverNumber), engine, new Position());
 	}
 
 	public void move() {
