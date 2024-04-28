@@ -9,4 +9,9 @@ public class FakeOutputPrinter implements OutputPrinter {
         // do nothing
     }
 
+    @Override
+    public void printEmptyLine() {
+        // do nothing
+    }
+
 }

@@ -7,4 +7,9 @@ public class SystemOutputPrinter implements OutputPrinter {
         System.out.println(outputMessage);
     }
 
+    @Override
+    public void printEmptyLine() {
+        System.out.println();
+    }
+
 }

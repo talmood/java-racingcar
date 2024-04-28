@@ -8,7 +8,7 @@ public class RacingCar {
     private int numOfMovedForward;
     private final RacingCarName name;
 
-    RacingCar(final int numOfMovedForward, final RacingCarName name) {
+    public RacingCar(final int numOfMovedForward, final RacingCarName name) {
         if (numOfMovedForward < 0) {
             throw new IllegalArgumentException("numOfMovedForward must not be negative");
         }
@@ -37,6 +37,10 @@ public class RacingCar {
 
     public RacingCarName getName() {
         return this.name;
+    }
+
+    public String fetchName() {
+        return getName().name();
     }
 
 }

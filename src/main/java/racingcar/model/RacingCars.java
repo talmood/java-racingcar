@@ -6,7 +6,7 @@ public class RacingCars {
 
     private final List<RacingCar> cars;
 
-    RacingCars(List<RacingCar> cars) {
+    public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
 
@@ -35,6 +35,10 @@ public class RacingCars {
                 .map(RacingCar::getNumOfMovedForward)
                 .max(Integer::compareTo)
                 .orElse(0);
+    }
+
+    public List<RacingCar> getCars() {
+        return List.copyOf(this.cars);
     }
 
 }
