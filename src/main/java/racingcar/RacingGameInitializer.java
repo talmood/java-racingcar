@@ -33,12 +33,12 @@ public class RacingGameInitializer {
         if (carNames.size() < 2) {
             throw new IllegalArgumentException("2대 이상의 자동차가 필요합니다.");
         }
-        Set<String> nameSet = new HashSet<>();
+        final Set<String> carNameSet = new HashSet<>();
         for (final String name : carNames) {
-            if (nameSet.contains(name)) {
+            if (carNameSet.contains(name)) {
                 throw new IllegalArgumentException("중복된 자동차 이름이 있습니다. : " + name);
             }
-            nameSet.add(name);
+            carNameSet.add(name);
         }
     }
 
