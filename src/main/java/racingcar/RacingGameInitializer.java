@@ -18,7 +18,9 @@ public class RacingGameInitializer {
         final String input = Console.readLine().trim();
         final String[] carNamesArray = input.split(",");
         final List<String> carNames = Arrays.stream(carNamesArray)
-                .map(String::trim).toList();
+                .map(String::trim)
+                .filter(name -> !name.isEmpty())
+                .toList();
 
         validateCarNames(carNames);
         return createCars(carNames);
@@ -34,7 +36,7 @@ public class RacingGameInitializer {
         Set<String> nameSet = new HashSet<>();
         for (final String name : carNames) {
             if (nameSet.contains(name)) {
-                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + name);
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다. : " + name);
             }
             nameSet.add(name);
         }
