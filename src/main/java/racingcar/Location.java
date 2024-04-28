@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Location {
-
+    private final static String LOCATION_COUNT_STRING = "-";
     private final int location;
 
     private Location(int location) {
@@ -17,7 +17,7 @@ public class Location {
     }
 
     public void printLocation() {
-        System.out.print("-".repeat(this.location));
+        System.out.print(LOCATION_COUNT_STRING.repeat(this.location));
     }
 
     public int now() {
