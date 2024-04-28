@@ -9,7 +9,7 @@ public class RacingCars {
 
     private static final int START_INCLUSIVE_RANDOM_VALUE = 0;
     private static final int END_INCLUSIVE_RANDOM_VALUE = 9;
-    
+
     private final List<RacingCar> racingCars;
 
     private RacingCars(List<RacingCar> racingCars) {
@@ -43,10 +43,12 @@ public class RacingCars {
         return Collections.max(this.racingCars, (o1, o2) -> o1.getNowLocation() - o2.getNowLocation());
     }
 
-    public RacingCars findSameLocationCar(RacingCar compareTo) {
-        return new RacingCars(this.racingCars.stream()
-                .filter(compareTo::isSameLocation)
-                .toList());
+    public RacingCars findSameLocationCar(RacingCar racingCar) {
+        return new RacingCars(
+                this.racingCars.stream()
+                        .filter(racingCar::isSameLocation)
+                        .toList()
+        );
     }
 
     public String getCarNamesWithJoin(String delimiter) {
