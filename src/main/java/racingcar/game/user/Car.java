@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game.user;
 
 import racingcar.common.Constant;
 

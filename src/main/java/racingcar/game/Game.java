@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.game;
 
 import racingcar.common.Utils;
+import racingcar.game.user.User;
 import racingcar.io.UserInputScan;
 import racingcar.io.UserOutputDisplay;
 
@@ -14,7 +15,7 @@ public class Game {
     public void init() {
         final UserInputScan userInputScan = new UserInputScan();
         userInputScan.scan();
-        this.numberOfPlayRound = userInputScan.getNumberOfPlayGame();
+        this.numberOfPlayRound = userInputScan.getRound();
         this.users = Arrays.stream(userInputScan.getUserNames()).map(User::new).toList();
     }
 
@@ -40,7 +41,7 @@ public class Game {
         for (final User targetUser : users) {
             targetUser.displayStatus();
         }
-    }//최종 우승자 : pobi, jun
+    }
 
     private void displayRoundStatus() {
         displayUser(this.users);
@@ -61,7 +62,6 @@ public class Game {
     private List<User> findBestUser(final int bestScore) {
         return users.stream().filter(user -> user.getCar().getPosition() == bestScore).toList();
     }
-
 
     private void displayWinner() {
         final int bestScore = findBestScore();

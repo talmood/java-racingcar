@@ -6,24 +6,23 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserInputScan {
     private String[] userNames;
-    private int numberOfPlayGame;
+    private int numberOfPlayRound;
 
     public String[] getUserNames() {
         return userNames;
     }
 
-    public int getNumberOfPlayGame() {
-        return numberOfPlayGame;
+    public int getRound() {
+        return numberOfPlayRound;
     }
 
     public void scan() {
         System.out.println(Constant.PLACEHOLDER_NAME);
         this.userNames = validationUserName(readLine());
         System.out.println(Constant.PLACEHOLDER_ROUND);
-        this.numberOfPlayGame = validationNumberOfPlayGame(readLine());
+        this.numberOfPlayRound = validationNumberOfPlayRound(readLine());
     }
-
-    private String[] validationUserName(final String userInputName) {
+    public String[] validationUserName(final String userInputName) {
         try {
             return userInputName.split(",");
         } catch (Exception e) {
@@ -31,13 +30,13 @@ public class UserInputScan {
         }
     }
 
-    private int validationNumberOfPlayGame(final String userInputNumberOfPlayGame) {
+    public int validationNumberOfPlayRound(final String numberOfPlayRound) {
         try {
-            final int numberOfPlayGame = Integer.parseInt(userInputNumberOfPlayGame);
-            if (numberOfPlayGame < 0) {
+            final int round = Integer.parseInt(numberOfPlayRound);
+            if (round < 0) {
                 throw new IllegalArgumentException();
             }
-            return numberOfPlayGame;
+            return round;
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
