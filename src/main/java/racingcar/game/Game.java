@@ -5,36 +5,49 @@ import racingcar.game.user.User;
 import racingcar.io.UserInputScan;
 import racingcar.io.UserOutputDisplay;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Game {
     private int numberOfPlayRound;
     private List<User> users;
+    private final List<Round> rounds = new ArrayList<>();
 
     public void init() {
+        scanUserInput();
+    }
+
+    public void start() {
+        startGame();
+        displayRoundResult();
+        displayWinner();
+    }
+
+    private void scanUserInput() {
         final UserInputScan userInputScan = new UserInputScan();
         userInputScan.scan();
         this.numberOfPlayRound = userInputScan.getRound();
         this.users = Arrays.stream(userInputScan.getUserNames()).map(User::new).toList();
     }
 
-    public int getNumberOfPlayRound() {
-        return numberOfPlayRound;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void start() {
-        startGame();
-        displayWinner();
-    }
-
     private void startGame() {
-        final Round round = new Round(this);
-        round.start();
+        for (int roundNumber = 0; roundNumber < numberOfPlayRound; roundNumber++) {
+            final Round round = new Round(roundNumber, users);
+            round.start();
+            userStatusUpdate(round);
+            rounds.add(round);
+        }
+    }
+
+    private void userStatusUpdate(final Round round) {
+        users = round.getUsers();
+    }
+
+    private void displayRoundResult() {
+        for (Round round : rounds) {
+            round.displayRoundStatus();
+        }
     }
 
     private void displayWinner() {

@@ -7,27 +7,26 @@ import racingcar.io.UserOutputDisplay;
 import java.util.List;
 
 public class Round {
-    private final Game game;
+    private int roundNumber;
+    private List<User> users;
 
-    public Round(Game game) {
-        this.game = game;
+    public Round(int roundNumber, List<User> users) {
+        this.roundNumber = roundNumber;
+        this.users = users;
     }
 
     public void start() {
-        for (int round = 0; round < game.getNumberOfPlayRound(); round++) {
-            playRound();
-            displayRoundStatus();
-        }
-    }
-
-    private void playRound() {
-        for (final User targetUser : game.getUsers()) {
+        for (final User targetUser : users) {
             targetUser.getCar().forward(Utils.getRandomNumber());
         }
     }
 
-    private void displayRoundStatus() {
-        displayUser(game.getUsers());
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void displayRoundStatus() {
+        displayUser(users);
         UserOutputDisplay.newLine();
     }
 
@@ -36,5 +35,4 @@ public class Round {
             targetUser.displayStatus();
         }
     }
-
 }
