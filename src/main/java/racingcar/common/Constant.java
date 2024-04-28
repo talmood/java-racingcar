@@ -9,4 +9,8 @@ public class Constant {
     public static int CAR_AVAILABLE_MOVE_THRESHOLD = 4;
 
     public static String DISPLAY_POSITION_MARK = "-";
+
+    public static int MIN_RANDOM_RANGE = 0;
+    public static int MAX_RANDOM_RANGE = 9;
 }
+
