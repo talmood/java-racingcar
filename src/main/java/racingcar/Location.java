@@ -4,7 +4,7 @@ public class Location {
 
     private final int location;
 
-    public Location(int location) {
+    private Location(int location) {
         this.location = location;
     }
 
