@@ -6,11 +6,15 @@ public class AttemptCount {
 
     private int count;
 
-    public AttemptCount(final int count) {
+    AttemptCount(final int count) {
+        this.count = count;
+    }
+
+    public static AttemptCount from(int count) {
         if (count < MIN_COUNT) {
             throw new IllegalArgumentException("Attempt count must be greater than or equal to %d".formatted(MIN_COUNT));
         }
-        this.count = count;
+        return new AttemptCount(count);
     }
 
     public void deductOneCount() {

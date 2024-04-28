@@ -14,7 +14,7 @@ class AttemptCountTest {
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -100})
     void invalid_attempt_count(int count) {
-        assertThatThrownBy(() -> new AttemptCount(count))
+        assertThatThrownBy(() -> AttemptCount.from(count))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Attempt count must be greater than or equal to 1");
     }
@@ -30,6 +30,18 @@ class AttemptCountTest {
 
         // then
         assertThat(sut.getCount()).isEqualTo(0);
+    }
+
+    @Test
+    void ranOutOfCount_true() {
+        final AttemptCount sut = new AttemptCount(0);
+        assertThat(sut.ranOutOfCount()).isTrue();
+    }
+
+    @Test
+    void ranOutOfCount_false() {
+        final AttemptCount sut = new AttemptCount(1);
+        assertThat(sut.ranOutOfCount()).isFalse();
     }
 
 }
