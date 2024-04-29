@@ -1,6 +1,7 @@
 package racingcar.io;
 
 import racingcar.common.Constant;
+import racingcar.common.ExceptionMsg;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -27,7 +28,7 @@ public class UserInputScan {
         try {
             return userInputName.split(",");
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.WRONG_STRING_TYPE);
         }
     }
 
@@ -35,11 +36,11 @@ public class UserInputScan {
         try {
             final int round = Integer.parseInt(numberOfPlayRound);
             if (round < 0) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ExceptionMsg.NEGATIVE_NUMBER_OF_PLAY_ROUND);
             }
             return round;
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.NAN);
         }
     }
 }

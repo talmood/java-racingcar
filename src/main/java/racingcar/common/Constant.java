@@ -12,5 +12,6 @@ public class Constant {
 
     public static int MIN_RANDOM_RANGE = 0;
     public static int MAX_RANDOM_RANGE = 9;
+    public static int INIT_CAR_POSITION = 0;
 }
 

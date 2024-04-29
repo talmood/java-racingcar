@@ -1,6 +1,7 @@
 package racingcar.game.user;
 
 import racingcar.common.Constant;
+import racingcar.common.ExceptionMsg;
 import racingcar.io.UserOutputDisplay;
 
 public class User {
@@ -14,7 +15,7 @@ public class User {
     public User(String name) {
         validationName(name);
         this.name = name;
-        this.car = new Car(0);
+        this.car = new Car(Constant.INIT_CAR_POSITION);
     }
 
     public Car getCar() {
@@ -23,7 +24,7 @@ public class User {
 
     private void validationName(final String name) {
         if (name.length() > Constant.MAX_USER_NAME || name.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.USER_NAME_MAX_LENGTH);
         }
     }
 
