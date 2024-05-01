@@ -1,29 +1,29 @@
 package racingcar.model;
 
+import racingcar.model.vo.CarName;
+import racingcar.model.vo.CarPosition;
+
 public class Car {
-	private static final int MAX_NAME_LENGTH = 5;
 
 	// 자동차 이름
-	private String name;
+	private final CarName name;
 	// 전진 위치
-	private String position = "";
+	private final CarPosition position;
 
-	private Car(final String name) {
-		if (name.length() > MAX_NAME_LENGTH) {
-			throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-		}
+	private Car(final CarName name, final CarPosition position) {
 		this.name = name;
+		this.position = position;
 	}
 
-	public static Car from(final String name) {
-		return new Car(name);
+	public static Car of(final String name, final int position) {
+		return new Car(CarName.from(name), CarPosition.from(position));
 	}
 
 	/**
 	 * 자동차의 전진하는 위치를 한 칸 추가한다.
 	 */
-	public void increasePosition() {
-		this.position += "-";
+	public Car increasePosition() {
+		return new Car(name, position.increasePosition());
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class Car {
 	 * @return
 	 */
 	public int fetchCurrentPositionLength() {
-		return position.length();
+		return position.fetchPosition();
 	}
 
 	/**
@@ -39,13 +39,13 @@ public class Car {
 	 * @return
 	 */
 	public String fetchCarName() {
-		return name;
+		return name.fetchCarName();
 	}
 
 	/**
 	 * 자동차의 현재 전진 상태를 출력한다.
 	 */
 	public void printState() {
-		System.out.println("%s : %s".formatted(name, position));
+		System.out.println("%s : %s".formatted(name.fetchCarName(), position.printCurrentPosition()));
 	}
 }

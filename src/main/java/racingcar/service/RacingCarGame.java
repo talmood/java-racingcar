@@ -25,13 +25,16 @@ public class RacingCarGame {
 	/**
 	 * 랜덤 값을 구한 후, MOVING_FORWARD 값 이상이면 전진시킨다.
 	 */
-	public void moveOrStop() {
-		for (Car car : cars) {
-			int random = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
-			if (random >= MOVING_FORWARD) {
-				car.increasePosition();
-			}
-		}
+	public void movingOrStopCar() {
+		cars = cars.stream()
+				.map(car -> {
+					int random = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
+					if (random >= MOVING_FORWARD) {
+						return car.increasePosition();
+					}
+					return car;
+				})
+				.toList();
 
 		printRacingState();
 	}
