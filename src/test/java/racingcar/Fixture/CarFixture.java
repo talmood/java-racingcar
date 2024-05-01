@@ -1,17 +1,17 @@
 package racingcar.Fixture;
 
-import racingcar.common.Constant;
+import racingcar.common.constant.LimitValue;
 
 public class CarFixture {
     public static int getLowerForwardThreshold(){
-        return Constant.CAR_AVAILABLE_MOVE_THRESHOLD - 1;
+        return LimitValue.CAR_AVAILABLE_MOVE_THRESHOLD - 1;
     }
 
     public static int getEqualForwardThreshold(){
-        return Constant.CAR_AVAILABLE_MOVE_THRESHOLD;
+        return LimitValue.CAR_AVAILABLE_MOVE_THRESHOLD;
     }
 
     public static int getUpperForwardThreshold(){
-        return Constant.CAR_AVAILABLE_MOVE_THRESHOLD + 1;
+        return LimitValue.CAR_AVAILABLE_MOVE_THRESHOLD + 1;
     }
 }
