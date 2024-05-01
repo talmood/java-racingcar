@@ -16,9 +16,6 @@ public class Round {
         this.roundNumber = roundNumber;
         for (User user: users) {
             this.users.add(user.UserCopy());
-            System.out.println("user.getName() = " + user.getName());
-            System.out.println("user.getCar().getPosition() = " + user.getCar().getPosition());
-            System.out.println();
         }
     }
 
