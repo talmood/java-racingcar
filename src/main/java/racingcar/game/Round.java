@@ -10,12 +10,12 @@ import java.util.List;
 
 public class Round {
     private int roundNumber;
-    private List<User> users = new ArrayList<>();
+    final private List<User> users = new ArrayList<>();
 
     public Round(int roundNumber, List<User> users) {
         this.roundNumber = roundNumber;
         for (User user: users) {
-            this.users.add(user.UserCopy());
+            this.users.add(User.UserCopy(user));
         }
     }
 
@@ -26,11 +26,7 @@ public class Round {
     }
 
     public List<User> getUsers() {
-        final List<User> userList = new ArrayList<>();
-        for (User user: users) {
-            userList.add(user.UserCopy());
-        }
-        return userList;
+        return users;
     }
 
     public void displayRoundStatus() {

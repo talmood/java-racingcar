@@ -6,7 +6,7 @@ import racingcar.common.constant.LimitValue;
 import racingcar.io.UserOutputDisplay;
 
 public class User{
-    private String name;
+    final private String name;
     private Car car;
 
     public String getName() {
@@ -19,9 +19,9 @@ public class User{
         this.car = new Car(LimitValue.INIT_CAR_POSITION);
     }
 
-    public User UserCopy(){
-        final User coypUser = new User(this.getName());
-        coypUser.setCar(this.getCar());
+    public static User UserCopy(final User user){
+        final User coypUser = new User(user.getName());
+        coypUser.setCar(Car.copy(user.getCar()));
         return coypUser;
     }
 

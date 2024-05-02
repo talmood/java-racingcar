@@ -12,6 +12,10 @@ public class Car {
         this.position = position;
     }
 
+    public static Car copy(final Car car){
+        return new Car(car.getPosition());
+    }
+
     public int getPosition() {
         return position;
     }

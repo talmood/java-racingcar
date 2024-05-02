@@ -47,7 +47,6 @@ public class Game {
     private void displayRoundResult() {
         for (Round round : rounds) {
             round.displayRoundStatus();
-            round.getUsers().forEach(user->System.out.println(user.getCar().getPosition()));
         }
     }
 
