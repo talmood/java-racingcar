@@ -35,12 +35,12 @@ public class Game {
         for (int roundNumber = 0; roundNumber < numberOfPlayRound; roundNumber++) {
             final Round round = new Round(roundNumber, users);
             round.start();
-            userStatusUpdate(round);
+            updateUserStatus(round);
             rounds.add(round);
         }
     }
 
-    private void userStatusUpdate(final Round round) {
+    private void updateUserStatus(final Round round) {
         users = round.getUsers();
     }
 
@@ -51,7 +51,7 @@ public class Game {
     }
 
     private void displayWinner() {
-        final int bestScore = Utils.findBestScore(users.stream().map(user -> user.getCar().getPosition()).toList());
+        final int bestScore = Utils.findBiggestNumber(users.stream().map(user -> user.getCar().getPosition()).toList());
         final List<String> bestUserNames = Utils.findBestUser(users, bestScore).stream().map(User::getName).toList();
         UserOutputDisplay.planText(String.format("최종 우승자 : %s", String.join(",", bestUserNames)));
     }

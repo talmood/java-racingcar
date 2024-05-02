@@ -4,15 +4,19 @@ import racingcar.common.Utils;
 import racingcar.game.user.User;
 import racingcar.io.UserOutputDisplay;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class Round {
     private int roundNumber;
-    private List<User> users;
+    final private List<User> users = new ArrayList<>();
 
     public Round(int roundNumber, List<User> users) {
         this.roundNumber = roundNumber;
-        this.users = users;
+        for (User user: users) {
+            this.users.add(User.UserCopy(user));
+        }
     }
 
     public void start() {
